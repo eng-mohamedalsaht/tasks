@@ -1,0 +1,34 @@
+<div class="container bg-light">
+    <form [formGroup]="pform" (submit)="oper($event)">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">add product</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                formControlName="productName">
+
+
+        </div>
+        <ng-container *ngIf="pname.touched">
+            <div *ngIf="pname.hasError('required')" class="text-danger">pleass enter name</div>
+            <div *ngIf="pname.hasError('minlength')" class="text-danger">name is less than 3</div>
+        </ng-container>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">price</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" formControlName="price">
+            <ng-container *ngIf="pprice.touched">
+                <div *ngIf="pprice.hasError('required')" class="text-danger">pleass enter price</div>
+                <div *ngIf="pprice.hasError('minlength')" class="text-danger">price must be greater than 3</div>
+            </ng-container>
+            <!-- <div class="text-danger">{{pprice.errors|json}}</div> -->
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">quantity</label>
+            <input type="number" class="form-control" id="exampleInputPassword1" formControlName="quantity">
+            <ng-container *ngIf="pquantity.touched">
+                <div *ngIf="pquantity.hasError('required')" class="text-danger">pleass enter quantity</div>
+                <div *ngIf="pquantity.hasError('minlength')" class="text-danger">quantity must be grater than 10</div>
+            </ng-container>
+        </div>
+        <button type="submit" class="btn btn-primary">{{productid==0?'add':'edit'}}</button>
+    </form>
+</div>

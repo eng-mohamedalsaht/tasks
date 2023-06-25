@@ -1,0 +1,23 @@
+<div class="row gap-3 mt-4">
+
+    <div class=" col">
+        <label for="formGroupExampleInput" class="form-label">Student treack</label>
+
+        <select class="form-select " (change)="display()" [(ngModel)]="select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option *ngFor="let item of tracks">{{item}}</option>
+
+        </select>
+        <div *ngIf="message1" class="alert alert-danger mt-2">{{message1}}</div>
+    </div>
+
+    <div class=" col ps-3" *ngIf="select!='Open this select menu'">
+        <label for="formGroupExampleInput" class="form-label">Student branch</label>
+
+        <select (change)="displayBrach()" [(ngModel)]="selectBranch" class="form-select  ">
+            <option selected>select branch</option>
+            <option *ngFor="let item of arr">{{item}}</option>
+        </select>
+        <div *ngIf="message2" class="alert alert-danger mt-2">{{message2}}</div>
+    </div>
+</div>

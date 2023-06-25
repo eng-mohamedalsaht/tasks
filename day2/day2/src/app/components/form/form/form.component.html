@@ -1,0 +1,35 @@
+<!-- <input type="text" [(ngModel)]="x"> -->
+
+<div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Student Name</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="name" [(ngModel)]="name">
+    <div *ngIf="message1" class="alert alert-danger mt-2">{{message1}}</div>
+</div>
+<div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Student Age</label>
+    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="age" [(ngModel)]="age">
+    <div *ngIf="message2" class="alert alert-danger mt-2">{{message2}}</div>
+</div>
+
+<button class="btn btn-success px-5 mt-3" (click)="display()">add</button>
+
+<app-select (newItemEvent)="addItem($event)"></app-select>
+
+<table table class="table table-striped-columns mt-5  ">
+
+    <tr class="bg-dark text-light ">
+        <th class="p-3">ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Track</th>
+        <th>Branch</th>
+
+    </tr>
+    <tr class=" m-2 p-5" *ngFor="let item of List;let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Age}}</td>
+        <td>{{item.Track}}</td>
+        <td>{{item.Branch}}</td>
+    </tr>
+</table>
